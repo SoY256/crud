@@ -1,28 +1,28 @@
 module.exports = app => {
-  const tutorials = require("../controllers/tutorial.controller.js");
+  const tutki = require("../controllers/tutorial.controller.js");
 
   var router = require("express").Router();
 
   // Create a new Tutorial
-  router.post("/", tutorials.create);
+  router.post("/", tutki.create);
 
-  // Retrieve all Tutorials
-  router.get("/", tutorials.findAll);
+  // Retrieve all tutki
+  router.get("/", tutki.findAll);
 
-  // Retrieve all published Tutorials
-  router.get("/published", tutorials.findAllPublished);
+  // Retrieve all published tutki
+  router.get("/published", tutki.findAllPublished);
 
   // Retrieve a single Tutorial with id
-  router.get("/:id", tutorials.findOne);
+  router.get("/:id", tutki.findOne);
 
   // Update a Tutorial with id
-  router.put("/:id", tutorials.update);
+  router.put("/:id", tutki.update);
 
   // Delete a Tutorial with id
-  router.delete("/:id", tutorials.delete);
+  router.delete("/:id", tutki.delete);
 
   // Create a new Tutorial
-  router.delete("/", tutorials.deleteAll);
+  router.delete("/", tutki.deleteAll);
 
-  app.use("/api/tutorials", router);
+  app.use("/api/tutki", router);
 };
