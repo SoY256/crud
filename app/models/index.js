@@ -18,6 +18,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tutki = require("./tutorial.model.js")(sequelize, Sequelize);
+db.strazacy = require("./strazak.model.js")(sequelize, Sequelize);
 
 module.exports = db;
