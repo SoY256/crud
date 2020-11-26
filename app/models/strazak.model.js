@@ -9,6 +9,9 @@ module.exports = (sequelize, Sequelize) => {
     published: {
       type: Sequelize.BOOLEAN
     }
+  },
+  {
+    freezeTableName: true
   });
 
   return Strazak;
