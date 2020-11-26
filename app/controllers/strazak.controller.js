@@ -3,7 +3,7 @@ const strazak = db.strazacy;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
-exports.create = (req, res) => {
+exports.dodaj = (req, res) => {
   // Validate request
   if (!req.body.nazwisko) {
     res.status(400).send({
@@ -20,7 +20,7 @@ exports.create = (req, res) => {
   };
 
   // Save Tutorial in the database
-  Strazak.create(strazak)
+  Strazak.dodaj(strazak)
     .then(data => {
       res.send(data);
     })
@@ -33,11 +33,11 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {
+exports.znajdzWszystkich = (req, res) => {
   const nazwisko = req.query.nazwisko;
   var condition = nazwisko ? { nazwisko: { [Op.iLike]: `%${nazwisko}%` } } : null;
 
-  Strazak.findAll({ where: condition })
+  Strazak.znajdzWszystkich({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -50,10 +50,10 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single Tutorial with an id
-exports.findOne = (req, res) => {
+exports.znajdzJednego = (req, res) => {
   const id = req.params.id;
 
-  Strazak.findByPk(id)
+  Strazak.znajdzPoID(id)
     .then(data => {
       res.send(data);
     })
@@ -65,10 +65,10 @@ exports.findOne = (req, res) => {
 };
 
 // Update a Tutorial by the id in the request
-exports.update = (req, res) => {
+exports.zmien = (req, res) => {
   const id = req.params.id;
 
-  Strazak.update(req.body, {
+  Strazak.zmien(req.body, {
     where: { id: id }
   })
     .then(num => {
@@ -90,10 +90,10 @@ exports.update = (req, res) => {
 };
 
 // Delete a Tutorial with the specified id in the request
-exports.delete = (req, res) => {
+exports.usun = (req, res) => {
   const id = req.params.id;
 
-  Strazak.destroy({
+  Strazak.usun({
     where: { id: id }
   })
     .then(num => {
@@ -115,8 +115,8 @@ exports.delete = (req, res) => {
 };
 
 // Delete all Tutorials from the database.
-exports.deleteAll = (req, res) => {
-  Strazak.destroy({
+exports.usunWszystkich = (req, res) => {
+  Strazak.usun({
     where: {},
     truncate: false
   })
@@ -132,8 +132,8 @@ exports.deleteAll = (req, res) => {
 };
 
 // find all published Tutorial
-exports.findAllPublished = (req, res) => {
-  Strazak.findAll({ where: { published: true } })
+exports.znajdzOpublikowanych = (req, res) => {
+  Strazak.znajdzWszystkich({ where: { published: true } })
     .then(data => {
       res.send(data);
     })

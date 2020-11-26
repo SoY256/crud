@@ -4,25 +4,25 @@ module.exports = app => {
   var router = require("express").Router();
 
   // Create a new Tutorial
-  router.post("/", strazacy.create);
+  router.post("/", strazacy.dodaj);
 
   // Retrieve all tutki
-  router.get("/", strazacy.findAll);
+  router.get("/", strazacy.znajdzWszystkich);
 
   // Retrieve all published tutki
-  router.get("/published", strazacy.findAllPublished);
+  router.get("/published", strazacy.znajdzOpublikowanych);
 
   // Retrieve a single Tutorial with id
-  router.get("/:id", strazacy.findOne);
+  router.get("/:id", strazacy.znajdzJednego);
 
   // Update a Tutorial with id
-  router.put("/:id", strazacy.update);
+  router.put("/:id", strazacy.zmien);
 
   // Delete a Tutorial with id
-  router.delete("/:id", strazacy.delete);
+  router.delete("/:id", strazacy.usun);
 
   // Create a new Tutorial
-  router.delete("/", strazacy.deleteAll);
+  router.delete("/", strazacy.usunWszystkich);
 
   app.use("/api/strazacy", router);
 };
