@@ -20,7 +20,7 @@ exports.dodaj = (req, res) => {
   };
 
   // Save Tutorial in the database
-  Strazak.dodaj(strazak)
+  strazak.dodaj(strazak)
     .then(data => {
       res.send(data);
     })
@@ -37,7 +37,7 @@ exports.znajdzWszystkich = (req, res) => {
   const nazwisko = req.query.nazwisko;
   var condition = nazwisko ? { nazwisko: { [Op.iLike]: `%${nazwisko}%` } } : null;
 
-  Strazak.znajdzWszystkich({ where: condition })
+  strazak.znajdzWszystkich({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -53,7 +53,7 @@ exports.znajdzWszystkich = (req, res) => {
 exports.znajdzJednego = (req, res) => {
   const id = req.params.id;
 
-  Strazak.znajdzPoID(id)
+  strazak.znajdzPoID(id)
     .then(data => {
       res.send(data);
     })
@@ -68,7 +68,7 @@ exports.znajdzJednego = (req, res) => {
 exports.zmien = (req, res) => {
   const id = req.params.id;
 
-  Strazak.zmien(req.body, {
+  strazak.zmien(req.body, {
     where: { id: id }
   })
     .then(num => {
@@ -93,7 +93,7 @@ exports.zmien = (req, res) => {
 exports.usun = (req, res) => {
   const id = req.params.id;
 
-  Strazak.usun({
+  strazak.usun({
     where: { id: id }
   })
     .then(num => {
@@ -116,7 +116,7 @@ exports.usun = (req, res) => {
 
 // Delete all Tutorials from the database.
 exports.usunWszystkich = (req, res) => {
-  Strazak.usun({
+  strazak.usun({
     where: {},
     truncate: false
   })
@@ -133,7 +133,7 @@ exports.usunWszystkich = (req, res) => {
 
 // find all published Tutorial
 exports.znajdzOpublikowanych = (req, res) => {
-  Strazak.znajdzWszystkich({ where: { published: true } })
+  strazak.znajdzWszystkich({ where: { published: true } })
     .then(data => {
       res.send(data);
     })
