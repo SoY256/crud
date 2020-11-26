@@ -53,7 +53,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Strazak.FindByPk(id)
+  Strazak.findByPk(id)
     .then(data => {
       res.send(data);
     })
