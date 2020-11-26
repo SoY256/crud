@@ -1,5 +1,5 @@
 const db = require("../models");
-const strazak = db.strazacy;
+const Strazak = db.strazacy;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -20,7 +20,7 @@ exports.create = (req, res) => {
   };
 
   // Save Tutorial in the database
-  strazak.create(strazak)
+  Strazak.create(strazak)
     .then(data => {
       res.send(data);
     })
@@ -37,7 +37,7 @@ exports.findAll = (req, res) => {
   const nazwisko = req.query.nazwisko;
   var condition = nazwisko ? { nazwisko: { [Op.iLike]: `%${nazwisko}%` } } : null;
 
-  strazak.findAll({ where: condition })
+  Strazak.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -53,7 +53,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  strazak.FindByPk(id)
+  Strazak.FindByPk(id)
     .then(data => {
       res.send(data);
     })
@@ -68,7 +68,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  strazak.update(req.body, {
+  Strazak.update(req.body, {
     where: { id: id }
   })
     .then(num => {
@@ -93,7 +93,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  strazak.destroy({
+  Strazak.destroy({
     where: { id: id }
   })
     .then(num => {
@@ -116,7 +116,7 @@ exports.delete = (req, res) => {
 
 // Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
-  strazak.destroy({
+  Strazak.destroy({
     where: {},
     truncate: false
   })
@@ -133,7 +133,7 @@ exports.deleteAll = (req, res) => {
 
 // find all published Tutorial
 exports.findAllPublished  = (req, res) => {
-  strazak.findAll({ where: { published: true } })
+  Strazak.findAll({ where: { published: true } })
     .then(data => {
       res.send(data);
     })
