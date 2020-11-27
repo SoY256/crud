@@ -6,8 +6,17 @@ module.exports = (sequelize, Sequelize) => {
     imie: {
       type: Sequelize.STRING
     },
-    published: {
+    czyMaUprawnienia: {
       type: Sequelize.BOOLEAN
+    },
+    czyKierowca: {
+      type: Sequelize.BOOLEAN
+    },
+    czyDowodca: {
+      type: Sequelize.BOOLEAN
+    },
+    dataUprawnien: {
+      type: Sequelize.DATEONLY
     }
   },
   {

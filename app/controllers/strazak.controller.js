@@ -16,7 +16,10 @@ exports.create = (req, res) => {
   const strazak = {
     nazwisko: req.body.nazwisko,
     imie: req.body.imie,
-    published: req.body.published ? req.body.published : false
+    czyMaUprawnienia: req.body.czyMaUprawnienia ? req.body.czyMaUprawnienia : false,
+    czyKierowca: req.body.czyKierowca,
+    czyDowodca: req.body.czyDowodca,
+    dataUprawnien: req.body.dataUprawnien
   };
 
   // Save Tutorial in the database
@@ -133,7 +136,7 @@ exports.deleteAll = (req, res) => {
 
 // find all published Tutorial
 exports.findAllPublished  = (req, res) => {
-  Strazak.findAll({ where: { published: true } })
+  Strazak.findAll({ where: { czyMaUprawnienia: true } })
     .then(data => {
       res.send(data);
     })
