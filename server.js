@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "https://react-fe-test.herokuapp.com"
+  origin: "https://moje-osp.herokuapp.com"
 };
 
 app.use(cors(corsOptions));
