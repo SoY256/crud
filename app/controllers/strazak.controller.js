@@ -2,7 +2,7 @@ const db = require("../models");
 const Strazak = db.strazacy;
 const Op = db.Sequelize.Op;
 
-// Create and Save a  new  Tutorial
+// Create and Save a  new Tutorial
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.nazwisko) {
